@@ -21,6 +21,7 @@
 #include <glew.h>
 
 #include <array>
+#include <algorithm>
 
 namespace ms
 {

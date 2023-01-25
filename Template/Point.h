@@ -19,6 +19,8 @@
 
 #include "../MapleStory.h"
 
+#include <cmath>
+
 #ifdef USE_NX
 #include <nlnx/node.hpp>
 #else
