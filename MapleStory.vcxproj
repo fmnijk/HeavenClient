@@ -23,7 +23,7 @@
     <ProjectGuid>{5B3DB0E4-3267-4074-B7BE-ECD225862B7D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>MapleStory</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
