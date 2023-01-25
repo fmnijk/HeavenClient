@@ -127,6 +127,7 @@ copy /y /d "$(ProjectDir)includes\NoLifeNx\nlnx\includes\lz4_v1_8_2_win$(Platfor
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glew32s.lib;freetype.lib;glfw3.lib;bass.lib;OpenGL32.lib;Iphlpapi.lib;NoLifeNx.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(ProjectDir)includes\glew-2.1.0\lib\Release\$(Platform);$(ProjectDir)includes\freetype\win$(PlatformArchitecture);$(ProjectDir)includes\glfw-3.3.2.bin.WIN$(PlatformArchitecture)\lib-vc2015;$(ProjectDir)includes\bass24\c\$(PlatformTarget);$(ProjectDir)includes\NoLifeNx\nlnx\$(PlatformTarget)\$(Configuration);$(ProjectDir)includes\WzLib\bin\Win32Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib;msvcrt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
     <PostBuildEvent>
       <Command>copy /y /d "$(ProjectDir)includes\freetype\win$(PlatformArchitecture)\freetype.dll" "$(OutDir)"
@@ -179,6 +180,7 @@ copy /y /d "$(ProjectDir)includes\NoLifeNx\nlnx\includes\lz4_v1_8_2_win$(Platfor
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glew32s.lib;freetype.lib;glfw3.lib;bass.lib;OpenGL32.lib;Iphlpapi.lib;NoLifeNx.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(ProjectDir)includes\glew-2.1.0\lib\Release\$(Platform);$(ProjectDir)includes\freetype\win$(PlatformArchitecture);$(ProjectDir)includes\glfw-3.3.2.bin.WIN$(PlatformArchitecture)\lib-vc2015;$(ProjectDir)includes\bass24\c\$(PlatformTarget);$(ProjectDir)includes\NoLifeNx\nlnx\$(PlatformTarget)\$(Configuration);$(ProjectDir)includes\WzLib\bin\Win32Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib;msvcrt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
     <PostBuildEvent>
       <Command>copy /y /d "$(ProjectDir)includes\freetype\win$(PlatformArchitecture)\freetype.dll" "$(OutDir)"
