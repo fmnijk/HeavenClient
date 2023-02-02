@@ -23,6 +23,8 @@
 #include <nlnx/node.hpp>
 #include <nlnx/nx.hpp>
 
+#include <iostream>
+
 namespace ms
 {
 	namespace NxFiles
@@ -46,8 +48,10 @@ namespace ms
 
 			constexpr const char* POSTCHAOS_BITMAP = "Login.img/WorldSelect/BtChannel/layer:bg";
 
-			if (nl::nx::UI.resolve(POSTCHAOS_BITMAP).data_type() != nl::node::type::bitmap)
-				return Error::Code::WRONG_UI_FILE;
+			uint16_t a = 5;
+
+			//if (nl::nx::UI.resolve(POSTCHAOS_BITMAP).data_type() != nl::node::type::bitmap)
+			//	return Error::Code::WRONG_UI_FILE;
 
 			return Error::Code::NONE;
 		}

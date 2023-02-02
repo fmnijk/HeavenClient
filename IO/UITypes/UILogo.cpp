@@ -29,7 +29,7 @@
 
 namespace ms
 {
-	UILogo::UILogo() : UIElement(Point<int16_t>(0, 0), Point<int16_t>(800, 600))
+	UILogo::UILogo() : UIElement(Point<int16_t>(512, 384), Point<int16_t>(800, 600))
 	{
 		Music("BgmUI.img/NxLogo").play_once();
 

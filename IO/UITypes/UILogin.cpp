@@ -37,13 +37,13 @@
 
 namespace ms
 {
-	UILogin::UILogin() : UIElement(Point<int16_t>(0, 0), Point<int16_t>(1024, 768)), title_pos(Point<int16_t>(344, 246)), nexon(false)
+	UILogin::UILogin() : UIElement(Point<int16_t>(0, 0), Point<int16_t>(1024, 768)), title_pos(Point<int16_t>(385, 267)), nexon(false)
 	{
 		LoginStartPacket().dispatch();
 
-		std::string LoginMusicNewtro = Configuration::get().get_login_music_newtro();
+		std::string LoginMusic = Configuration::get().get_login_music();
 
-		Music(LoginMusicNewtro).play();
+		Music(LoginMusic).play();
 
 		std::string version_text = Configuration::get().get_version();
 		version = Text(Text::Font::A12B, Text::Alignment::LEFT, Color::Name::LEMONGRASS, "Ver. " + version_text);
@@ -52,29 +52,29 @@ namespace ms
 		nl::node Login = nl::nx::UI["Login.img"];
 		version_pos = Login["Common"]["version"]["pos"];
 
-		nl::node Title_new = Login["Title_new"];
-		capslock = Title_new["capslock"];
+		nl::node Title = Login["Title"];
+		capslock = Title["capslock"];
 
-		nl::node check_src = Title_new["check"];
+		nl::node check_src = Title["check"];
 		check[false] = check_src["0"];
 		check[true] = check_src["1"];
 
-		sprites.emplace_back(nl::nx::Map001["Back"]["UI_login.img"]["back"]["0"], Point<int16_t>(512, 384));
-		sprites.emplace_back(Title_new["backgrd"], title_pos);
+		sprites.emplace_back(nl::nx::Map["Back"]["login.img"]["back"]["11"], Point<int16_t>(512, 384));
+		sprites.emplace_back(Title["signboard"], title_pos + Point<int16_t>(127, 117));
 
-		nl::node Tab = Title_new["Tab"];
+		nl::node Tab = Title["Tab"];
 		nl::node TabD = Tab["disabled"];
 		nl::node TabE = Tab["enabled"];
 
-		buttons[Buttons::BtLogin] = std::make_unique<MapleButton>(Title_new["BtLogin"], title_pos);
-		buttons[Buttons::BtEmailSave] = std::make_unique<MapleButton>(Title_new["BtEmailSave"], title_pos);
-		buttons[Buttons::BtEmailLost] = std::make_unique<MapleButton>(Title_new["BtEmailLost"], title_pos);
-		buttons[Buttons::BtPasswdLost] = std::make_unique<MapleButton>(Title_new["BtPasswdLost"], title_pos);
-		buttons[Buttons::BtNew] = std::make_unique<MapleButton>(Title_new["BtNew"], title_pos);
-		buttons[Buttons::BtHomePage] = std::make_unique<MapleButton>(Title_new["BtHomePage"], title_pos);
-		buttons[Buttons::BtQuit] = std::make_unique<MapleButton>(Title_new["BtQuit"], title_pos);
-		buttons[Buttons::BtMapleID] = std::make_unique<TwoSpriteButton>(TabD["0"], TabE["0"], Point<int16_t>(344, 246));
-		buttons[Buttons::BtNexonID] = std::make_unique<TwoSpriteButton>(TabD["1"], TabE["1"], Point<int16_t>(344, 246));
+		buttons[Buttons::BtLogin] = std::make_unique<MapleButton>(Title["BtLogin"], title_pos + Point<int16_t>(190, 66));
+		buttons[Buttons::BtEmailSave] = std::make_unique<MapleButton>(Title["BtEmailSave"], title_pos + Point<int16_t>(40, 118));
+		buttons[Buttons::BtEmailLost] = std::make_unique<MapleButton>(Title["BtEmailLost"], title_pos + Point<int16_t>(115, 118));
+		buttons[Buttons::BtPasswdLost] = std::make_unique<MapleButton>(Title["BtPasswdLost"], title_pos + Point<int16_t>(184, 118));
+		buttons[Buttons::BtNew] = std::make_unique<MapleButton>(Title["BtNew"], title_pos + Point<int16_t>(26, 140));
+		buttons[Buttons::BtHomePage] = std::make_unique<MapleButton>(Title["BtHomePage"], title_pos + Point<int16_t>(98, 140));
+		buttons[Buttons::BtQuit] = std::make_unique<MapleButton>(Title["BtQuit"], title_pos + Point<int16_t>(170, 140));
+		buttons[Buttons::BtMapleID] = std::make_unique<TwoSpriteButton>(TabD["0"], TabE["0"], Point<int16_t>(512, 384));
+		buttons[Buttons::BtNexonID] = std::make_unique<TwoSpriteButton>(TabD["1"], TabE["1"], Point<int16_t>(512, 384));
 
 		if (nexon)
 		{
@@ -92,7 +92,7 @@ namespace ms
 		Point<int16_t> textfield_pos = title_pos + Point<int16_t>(27, 69);
 
 #pragma region Account
-		Texture account_src = Texture(Title_new["mapleID"]);
+		Texture account_src = Texture(Title["ID"]);
 		account_src_dim = account_src.get_dimensions();
 
 		account = Textfield(Text::Font::A13M, Text::Alignment::LEFT, Color::Name::JAMBALAYA, Rectangle<int16_t>(textfield_pos, textfield_pos + account_src_dim), TEXTFIELD_LIMIT);
@@ -115,13 +115,13 @@ namespace ms
 		);
 
 		account_bg[false] = account_src;
-		account_bg[true] = Title_new["nexonID"];
+		account_bg[true] = Title["ID"];
 #pragma endregion
 
 #pragma region Password
 		textfield_pos.shift_y(account_src_dim.y() + 1);
 
-		Texture password_src = Title_new["PW"];
+		Texture password_src = Title["PW"];
 		password_src_dim = password_src.get_dimensions();
 
 		password = Textfield(Text::Font::A13M, Text::Alignment::LEFT, Color::Name::JAMBALAYA, Rectangle<int16_t>(textfield_pos, textfield_pos + password_src_dim), TEXTFIELD_LIMIT);
@@ -180,18 +180,18 @@ namespace ms
 		UIElement::draw(alpha);
 
 		version.draw(position + version_pos - Point<int16_t>(0, 5));
-		account.draw(position + Point<int16_t>(5, 10));
-		password.draw(position + Point<int16_t>(5, 13));
+		account.draw(position + Point<int16_t>(6, -5));
+		password.draw(position + Point<int16_t>(5, 1));
 
 		if (account.get_state() == Textfield::State::NORMAL && account.empty())
-			account_bg[nexon].draw(position + title_pos);
+			account_bg[nexon].draw(position + title_pos + Point<int16_t>(27, 66));
 
 		if (password.get_state() == Textfield::State::NORMAL && password.empty())
-			password_bg.draw(position + title_pos);
+			password_bg.draw(position + title_pos + Point<int16_t>(27, 94));
 
 		bool has_capslocks = UI::get().has_capslocks();
 
-		check[saveid].draw(position + title_pos);
+		check[saveid].draw(position + title_pos + Point<int16_t>(28, 122));
 
 		if (has_capslocks && account.get_state() == Textfield::State::FOCUSED)
 			capslock.draw(position + title_pos - Point<int16_t>(0, account_src_dim.y()));

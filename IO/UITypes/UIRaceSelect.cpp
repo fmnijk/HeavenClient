@@ -515,9 +515,9 @@ namespace ms
 			}
 			else if (class_index[previous] == Classes::KINESIS)
 			{
-				std::string LoginMusicNewtro = Configuration::get().get_login_music_newtro();
+				std::string LoginMusic = Configuration::get().get_login_music();
 
-				Music(LoginMusicNewtro).play();
+				Music(LoginMusic).play();
 			}
 		}
 		else

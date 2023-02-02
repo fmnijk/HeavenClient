@@ -229,7 +229,7 @@ namespace ms
 
 		const char* FILENAME = "Settings";
 		const char* TITLE = "MapleStory";
-		const char* VERSION = "228.3";
+		const char* VERSION = "1.22";
 		const char* LoginMusic = "BgmUI.img/Title";
 		const char* LoginMusicSEA = "BgmGL.img/OldMaple";
 		const char* LoginMusicNewtro = "BgmEvent2.img/Newtro_Login";
